@@ -10,7 +10,7 @@ export class SecurePage extends BasePage {
     constructor (page : Page) {
         super(page);
         this.managingList = new ManagingList (page);
-        this.title = page.locator('[data-test="page-title"]');
+        this.title = page.getByRole('heading', { name: 'My account' });
     }
 
     async validateTitle (title : string) {
