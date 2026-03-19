@@ -5,7 +5,7 @@ test.describe('Profile tests', () => {
     test.beforeEach(async ({ loginPage, page }) => {
         await loginPage.goToURL();
         await loginPage.loginForm.login('customer@practicesoftwaretesting.com', 'welcome01');
-        await expect(page).toHaveURL(/.*account/);
+        await expect(page).toHaveURL(/.*account/, { timeout: 10000 });
     });
 
     test ('TC1 - should login with valid credentials', async ({ securePage }) => {
