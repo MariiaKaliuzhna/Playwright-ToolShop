@@ -1,11 +1,9 @@
 {
   "name": "playwright",
   "version": "1.0.0",
-  "description": "",
+  "description": "Automated test cases for ToolShop demo application using Playwright",
   "main": "index.js",
-  "scripts": {},
-  "keywords": [],
-  "author": "",
+  "author": "Kaliuzhna Mariia",
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.58.2",

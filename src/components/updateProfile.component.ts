@@ -19,7 +19,7 @@ export class UpdateProfile {
 
     async fillPhone (number : string) {
         await this.inputPhone.fill(number);
-        await expect (this.inputFirstName).toHaveValue("Jack");
+        await expect (this.inputFirstName).toHaveValue("Jane");
         await this.btnUpdate.click();
     }
 }
