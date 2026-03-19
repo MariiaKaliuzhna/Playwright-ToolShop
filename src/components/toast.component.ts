@@ -10,6 +10,7 @@ export class Toast {
     }
 
     async validateAddingToFavorite (msg : string) {
+        await expect(this.msgToast).toBeVisible();
         await expect(this.msgToast).toHaveText(msg);
     }
 }

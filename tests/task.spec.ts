@@ -1,9 +1,11 @@
+import { expect } from "@playwright/test";
 import { test } from "../src/fixture/test.fixture";
 
 test.describe('Profile tests', () => {
-    test.beforeEach(async ({ loginPage }) => {
+    test.beforeEach(async ({ loginPage, page }) => {
         await loginPage.goToURL();
         await loginPage.loginForm.login('customer@practicesoftwaretesting.com', 'welcome01');
+        await expect(page).toHaveURL(/.*account/);
     });
 
     test ('TC1 - should login with valid credentials', async ({ securePage }) => {
@@ -11,6 +13,7 @@ test.describe('Profile tests', () => {
     });
 
     test ('TC2 - should successfully add number to profile', async ({ securePage, profilePage }) => {
+        await securePage.managingList.lnkProfile.waitFor();
         await securePage.managingList.lnkProfile.click();
         await profilePage.updateProfile.fillPhone('0101111111');
         await profilePage.validateMessage('Your profile is successfully updated!');

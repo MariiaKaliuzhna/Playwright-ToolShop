@@ -14,6 +14,7 @@ export class SecurePage extends BasePage {
     }
 
     async validateTitle (title : string) {
+        await expect(this.title).toBeVisible();
         await expect(this.title).toHaveText(title);
     }
 }
