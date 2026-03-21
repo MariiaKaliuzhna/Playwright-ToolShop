@@ -13,4 +13,9 @@ export abstract class BasePage {
         this.header = new Header (page);
         this.toast = new Toast (page);
     }
+
+    async waitForPageReady() {
+        await this.page.waitForLoadState('domcontentloaded');
+        await this.page.waitForTimeout(3000);
+    }
 }

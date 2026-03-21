@@ -4,6 +4,7 @@ import { test } from "../src/fixture/test.fixture";
 test.describe('Profile tests', () => {
     test.beforeEach(async ({ loginPage, page }) => {
         await loginPage.goToURL();
+        await loginPage.waitForPageReady();
         await loginPage.loginForm.login('customer@practicesoftwaretesting.com', 'welcome01');
     });
 
