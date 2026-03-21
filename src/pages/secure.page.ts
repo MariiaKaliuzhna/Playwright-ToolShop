@@ -13,8 +13,8 @@ export class SecurePage extends BasePage {
         this.title = page.getByRole('heading', { name: 'My account' });
     }
 
-    async validateTitle (title : string) {
-        await expect(this.title).toBeVisible({ timeout: 10000 });
-        await expect(this.title).toHaveText(title);
+    async validateTitle(title: string) {
+        //await this.title.waitFor({ state: 'visible', timeout: 20000 });
+        await expect(this.title).toHaveText(title, { timeout: 1000 });
     }
 }
