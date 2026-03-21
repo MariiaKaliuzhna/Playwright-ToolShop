@@ -14,7 +14,7 @@ export class SecurePage extends BasePage {
     }
 
     async validateTitle(title: string) {
-        //await this.title.waitFor({ state: 'visible', timeout: 20000 });
-        await expect(this.title).toHaveText(title, { timeout: 1000 });
+        await this.title.waitFor({ state: 'visible', timeout: 20000 });
+        await expect(this.title).toHaveText(title);
     }
 }
