@@ -1,8 +1,7 @@
-import { expect } from "@playwright/test";
 import { test } from "../src/fixture/test.fixture";
 
 test.describe('Profile tests', () => {
-    test.beforeEach(async ({ loginPage, page }) => {
+    test.beforeEach(async ({ loginPage }) => {
         await loginPage.goToURL();
         await loginPage.waitForPageReady();
         await loginPage.loginForm.login('customer@practicesoftwaretesting.com', 'welcome01');

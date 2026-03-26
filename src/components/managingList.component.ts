@@ -15,4 +15,8 @@ export class ManagingList {
         this.lnkInvoices = page.locator('[data-test="nav-invoices"]');
         this.lnkMessages = page.locator('[data-test="language-messages"]');
     }
+
+    async clickButton () : Promise<void> {
+        await this.lnkProfile.click();
+    }
 }

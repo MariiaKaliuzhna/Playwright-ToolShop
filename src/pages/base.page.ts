@@ -4,12 +4,10 @@ import { Toast } from "../components/toast.component";
 
 
 export abstract class BasePage {
-    readonly page : Page;
     readonly header : Header;
     readonly toast : Toast;
 
-    constructor (page : Page) {
-        this.page = page;
+    constructor (readonly page : Page) {
         this.header = new Header (page);
         this.toast = new Toast (page);
     }
