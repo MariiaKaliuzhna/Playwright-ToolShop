@@ -1,19 +1,17 @@
 import { Page, Locator } from "@playwright/test";
 
 export class LoginForm {
-    readonly page : Page;
     readonly inputEmail : Locator;
     readonly inputPassword : Locator;
     readonly btnSubmit : Locator;
     
-    constructor (page : Page) {
-        this.page = page;
-        this.inputEmail = page.locator('#email');
-        this.inputPassword = page.locator('#password');
-        this.btnSubmit = page.locator('.btnSubmit');
+    constructor (readonly page : Page) {
+        this.inputEmail = page.getByPlaceholder('Your email');
+        this.inputPassword = page.getByPlaceholder('Your password');
+        this.btnSubmit = page.getByRole('button', {name: 'Login'});
     }
 
-    async login (email : string, password : string) {
+    async login (email : string, password : string) : Promise<void> {
         await this.inputEmail.fill(email);
         await this.inputPassword.fill(password);
         await this.btnSubmit.click();

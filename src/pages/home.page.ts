@@ -1,20 +1,16 @@
-import { expect, Locator, Page } from "@playwright/test";
+import { Page } from "@playwright/test";
 import { BasePage } from "./base.page";
 import { SideBar } from "../components/sideBar.component";
-import { ProductCardsContainer } from "../components/productCardsContainer.component";
+import { ProductCard } from "../components/productCard.component";
 
 
 export class HomePage extends BasePage {
     readonly sideBar : SideBar;
-    readonly productCardContainer : ProductCardsContainer;
+    readonly productCard : ProductCard;
 
-    constructor (page : Page) {
+    constructor (readonly page : Page) {
         super(page);
         this.sideBar = new SideBar (page);
-        this.productCardContainer = new ProductCardsContainer (page);
-    }
-
-    async goToURL() {
-        await this.page.goto('/');
+        this.productCard = new ProductCard (page);
     }
 }

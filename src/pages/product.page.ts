@@ -1,4 +1,4 @@
-import { expect, Locator, Page } from "@playwright/test";
+import { Page } from "@playwright/test";
 import { BasePage } from "./base.page";
 import { ProductDetails } from "../components/productDetails.component";
 
@@ -6,7 +6,7 @@ import { ProductDetails } from "../components/productDetails.component";
 export class ProductPage extends BasePage {
     readonly productDetails : ProductDetails;
 
-    constructor (page : Page) {
+    constructor (readonly page : Page) {
         super(page);
         this.productDetails = new ProductDetails (page);
     }

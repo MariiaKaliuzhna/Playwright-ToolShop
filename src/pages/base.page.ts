@@ -12,8 +12,7 @@ export abstract class BasePage {
         this.toast = new Toast (page);
     }
 
-    async waitForPageReady() {
-        await this.page.waitForLoadState('domcontentloaded');
-        await this.page.waitForTimeout(3000);
+    async goToURL (url : string) {
+        await this.page.goto(url);
     }
 }

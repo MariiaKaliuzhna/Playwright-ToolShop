@@ -7,10 +7,10 @@ export class ProfilePage extends BasePage {
     readonly updateProfile : UpdateProfile;
     readonly msgConfirmation : Locator;
 
-    constructor (page : Page) {
+    constructor (readonly page : Page) {
         super(page);
         this.updateProfile = new UpdateProfile (page);
-        this.msgConfirmation = page.locator('.alert-success');
+        this.msgConfirmation = page.getByRole('alert');
     }
 
     async validateMessage(message : string) {

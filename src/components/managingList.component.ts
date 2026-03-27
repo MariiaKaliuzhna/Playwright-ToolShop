@@ -1,22 +1,19 @@
 import { Locator, Page } from "@playwright/test";
 
-
 export class ManagingList {
-    readonly page : Page;
     readonly lnkFavorites: Locator;
     readonly lnkProfile: Locator;
     readonly lnkInvoices: Locator;
     readonly lnkMessages: Locator;
 
-    constructor (page : Page) {
-        this.page = page;
-        this.lnkFavorites = page.locator('[data-test="nav-favorites"]');
-        this.lnkProfile = page.locator('[data-test="nav-profile"]');
-        this.lnkInvoices = page.locator('[data-test="nav-invoices"]');
-        this.lnkMessages = page.locator('[data-test="language-messages"]');
+    constructor (readonly page : Page) {
+        this.lnkFavorites = page.getByRole('button', {name: 'Favorites'});
+        this.lnkProfile = page.getByRole('button', {name: 'Profile'});
+        this.lnkInvoices = page.getByRole('button', {name: 'Invoices'});
+        this.lnkMessages = page.getByRole('button', {name: 'Messages'});
     }
 
-    async clickButton () : Promise<void> {
+    async clickToProfile () : Promise<void> {
         await this.lnkProfile.click();
     }
 }

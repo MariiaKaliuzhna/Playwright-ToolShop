@@ -6,12 +6,8 @@ import { BasePage } from "./base.page";
 export class LoginPage extends BasePage {
     readonly loginForm : LoginForm;
 
-    constructor (page : Page) {
+    constructor (readonly page : Page) {
         super(page);
         this.loginForm = new LoginForm(page);
-    }
-
-    async goToURL() {
-        await this.page.goto('/auth/login');
     }
 }

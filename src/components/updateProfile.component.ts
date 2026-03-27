@@ -1,25 +1,22 @@
-import { expect, Locator, Page } from "@playwright/test";
+import { Locator, Page } from "@playwright/test";
 
 export class UpdateProfile {
-    readonly page : Page;
     readonly inputFirstName: Locator;
     readonly inputLastName: Locator;
     readonly inputEmail: Locator;
     readonly inputPhone: Locator;
     readonly btnUpdate : Locator;
 
-    constructor (page : Page) {
-        this.page = page;
-        this.inputFirstName = page.locator('#first_name');
-        this.inputLastName = page.locator('#last_name');
-        this.inputEmail = page.locator('#email');
-        this.inputPhone = page.locator('#phone');
-        this.btnUpdate = page.locator('[data-test="update-profile-submit"]');
+    constructor (readonly page : Page) {
+        this.inputFirstName = page.getByRole('textbox', {name: 'First name'});
+        this.inputLastName = page.getByRole('textbox', {name: 'Last name'});
+        this.inputEmail = page.getByRole('textbox', {name: 'Email address'});
+        this.inputPhone = page.getByRole('textbox', {name: 'Phone'});
+        this.btnUpdate = page.getByRole('button', {name: 'Update Profile'});
     }
 
-    async fillPhone (number : string) {
+    async fillPhone (number : string) : Promise<void> {
         await this.inputPhone.fill(number);
-        await expect (this.inputFirstName).toHaveValue("Jane");
         await this.btnUpdate.click();
     }
 }

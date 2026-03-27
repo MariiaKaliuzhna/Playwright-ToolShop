@@ -5,33 +5,29 @@ import { ProfilePage } from "../pages/profile.page";
 import { HomePage } from "../pages/home.page";
 import { ProductPage } from "../pages/product.page";
 
+type Fixtures = {
+    loginPage: LoginPage;
+    securePage: SecurePage;
+    profilePage: ProfilePage;
+    homePage: HomePage;
+    productPage: ProductPage;
+};
 
-export const test = base.extend<{
-    loginPage : LoginPage;
-    securePage : SecurePage;
-    profilePage : ProfilePage;
-    homePage : HomePage;
-    productPage : ProductPage;
-}>({
+export const test = base.extend<Fixtures>({
     loginPage : async ({ page }, use) => {
-        const loginPage = new LoginPage (page);
-        await use(loginPage);
+        await use(new LoginPage (page));
     },
     securePage : async ({ page }, use) => {
-        const securePage = new SecurePage (page);
-        await use(securePage);
+        await use(new SecurePage (page));
     },
     profilePage : async ({ page }, use) => {
-        const profilePage = new ProfilePage (page);
-        await use(profilePage);
+        await use(new ProfilePage (page));
     },
     homePage : async ({ page }, use) => {
-        const homePage = new HomePage (page);
-        await use(homePage);
+        await use(new HomePage (page));
     },
     productPage : async ({ page }, use) => {
-        const productPage = new ProductPage (page);
-        await use(productPage);
+        await use(new ProductPage (page));
     },
     
 });
